@@ -8,26 +8,63 @@
 
 #include <string>
 #include <cstdint>
+#include <SFML/Graphics.hpp>
 
-namespace StatusAction
+enum TargetType
 {
-    static const char NONE      = '0';
-    static const char Shield    = '1';
-    static const char DamageUP  = '2';
-    static const char Poison    = '3';
-    static const char Burnning  = '4';
-    static const char HPRecover = '5';
-    static const char Freezing  = '6';
+    Single = 0,
+    Global,
+    Self
+};
+
+namespace CardColor
+{
+    static const sf::Color Red    = sf::Color(176, 53, 44);
+    static const sf::Color Yellow = sf::Color(191, 151, 57);
+    static const sf::Color Blue   = sf::Color(27, 105, 148);
+    static const sf::Color Green  = sf::Color(49, 145, 56);
+    static const sf::Color Black  = sf::Color(41, 41, 41);
 }
 
-namespace DefaultValue
+namespace Action
 {
-    static const float MAX_SHIELD  = 100;
-    static const float MAX_HP      = 100;
-    static const float POISON_FACTOR = 1.2f;
-    static const float BURN_FACTOR   = 2.3f;
-    static const float HP_FACTOR     = 3.0f;
-    static const float DAMAGE_FACTOR = 2.3f;
+    static const char NONE           = '0';
+    static const char Shield         = '1';
+    static const char PhysicalDamage = '2';
+    static const char ThunderDamage  = '3';
+    static const char FireDamage     = '4';
+    static const char ImpactDamage   = '5';
+    static const char HPRecover      = '6';
+    static const char Freezing       = '7';
+    static const char TurnTable      = '8';
+
+    static const float PhysicalDamageValue = 10.f;
+    static const float ThunderDamageValue  = 8.f;
+    static const float FireDamageValue     = 7.5f;
+    static const float ImpactDamageValue   = 8.3f;
+    static const float HPRecoverValue      = 7.8f;
+}
+
+namespace Status
+{
+    static char NONE         = "0";
+    static char Burning      = "1";
+    static char Bleeding     = "2";
+    static char Poisoning    = "3";
+    static char Blind        = "4";
+    static char HPRecovering = "5";
+    static char Freezing     = "6";
+}
+
+namespace DefaultMaxValue
+{
+    static const float MAX_SHIELD      = 30;
+    static const float MAX_HP          = 100;
+    static const float POISON_FACTOR   = 1.2f;
+    static const float BURNING_FACTOR  = 2.3f;
+    static const float BLEEDING_FACTOR = 3.0f;
+    static const float HP_FACTOR       = 3.0f;
+    static const float HIT_FACTOR      = 2.5f;
 }
 
 namespace NetInput

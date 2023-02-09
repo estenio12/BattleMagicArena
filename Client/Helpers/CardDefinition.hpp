@@ -12,36 +12,45 @@
 class Card
 {
     public:
-        int ID;
+        std::string ID = "00";
         std::string Title;
         std::string Description;
         sf::Sprite Sprite;
 
     public:
-        int Damage        = 0;
-        char StatusAction = '0';
+        float Damage      = 0.f;
+        char Action       = '0';
+        char TargetType   = '0';
+        char Status       = '0';
+        sf::Color CardColor = sf::Color::White;
 
     public:
-        Card(int ID,
+        Card(std::string ID,
              sf::Texture& texture, 
              sf::IntRect CardRectCoordenates,
              std::string Title,
              std::string Description,
-             int Damage,
-             char StatusAction)
+             float Damage,
+             char Action,
+             char TargetType = '0',
+             char Status = '0',
+             sf::Color CardColor)
         {
-            this->ID = ID;
+            this->ID          = ID;
             this->Sprite.setTexture(texture);
             this->Sprite.setTextureRect(CardRectCoordenates);
-            this->Title = Title;
+            this->Title       = Title;
             this->Description = Description;
-            this->Damage = Damage;
-            this->StatusAction = StatusAction;
+            this->Damage      = Damage;
+            this->Action      = Action;
+            this->TargetType  = TargetType;
+            this->Status      = Status;
+            this->CardColor   = CardColor;
         }
 
     public:
         void Render(sf::RenderWindow* app)
         {
-            
+            app->draw(this->Sprite);
         }
 };
