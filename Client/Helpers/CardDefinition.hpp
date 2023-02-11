@@ -32,9 +32,9 @@ class Card
              std::string Description,
              float Damage,
              char Action,
+             sf::Color CardColor,
              char TargetType = '0',
-             char Status = '0',
-             sf::Color CardColor)
+             char Status = '0')
         {
             this->ID          = ID;
             this->Sprite.setTexture(texture);

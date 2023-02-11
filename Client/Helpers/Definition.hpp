@@ -8,7 +8,10 @@
 
 #include <string>
 #include <cstdint>
+#include <vector>
 #include <SFML/Graphics.hpp>
+
+#include "../Helpers/CardDefinition.hpp"
 
 enum TargetType
 {
@@ -16,6 +19,13 @@ enum TargetType
     Global,
     Self
 };
+
+namespace Configuration
+{
+    static std::string DEFAULT_NICKNAME = "UNDEFINED";
+    static std::string DEFAULT_GLOBALID = "00";
+    static char DEFAULT_ID = '0'; 
+}
 
 namespace CardColor
 {
@@ -47,13 +57,13 @@ namespace Action
 
 namespace Status
 {
-    static char NONE         = "0";
-    static char Burning      = "1";
-    static char Bleeding     = "2";
-    static char Poisoning    = "3";
-    static char Blind        = "4";
-    static char HPRecovering = "5";
-    static char Freezing     = "6";
+    static char NONE         = '0';
+    static char Burning      = '1';
+    static char Bleeding     = '2';
+    static char Poisoning    = '3';
+    static char Blind        = '4';
+    static char HPRecovering = '5';
+    static char Freezing     = '6';
 }
 
 namespace DefaultMaxValue
@@ -65,6 +75,13 @@ namespace DefaultMaxValue
     static const float BLEEDING_FACTOR = 3.0f;
     static const float HP_FACTOR       = 3.0f;
     static const float HIT_FACTOR      = 2.5f;
+
+    static const float POISONING_DURATION = 3.5f;
+    static const float BURNING_DURATION   = 1.3f;
+    static const float BLEEDING_DURATION  = 1.0f;
+    static const float HP_DURATION        = 1.4f;
+    static const float FREEZING_DURATION  = 1.4f;
+    static const float BLIND_DURATION     = 1.4f;
 }
 
 namespace NetInput
@@ -80,5 +97,8 @@ namespace NetInput
 
 namespace Cards
 {
-    
+    std::vector<Card*> CardList
+    {
+        new Card(),
+    };
 }
