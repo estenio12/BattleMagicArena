@@ -52,7 +52,6 @@ namespace Status
     static char Burning      = '1';
     static char Bleeding     = '2';
     static char Poisoning    = '3';
-    static char Blind        = '4';
     static char HPRecovering = '5';
     static char Freezing     = '6';
 }
@@ -65,14 +64,12 @@ namespace DefaultMaxValue
     static const float BURNING_FACTOR  = 2.3f;
     static const float BLEEDING_FACTOR = 3.0f;
     static const float HP_FACTOR       = 3.0f;
-    static const float HIT_FACTOR      = 2.5f;
 
     static const float POISONING_DURATION = 3.5f;
     static const float BURNING_DURATION   = 1.3f;
     static const float BLEEDING_DURATION  = 1.0f;
     static const float HP_DURATION        = 1.4f;
     static const float FREEZING_DURATION  = 1.4f;
-    static const float BLIND_DURATION     = 1.4f;
 }
 
 namespace NetInput
@@ -86,10 +83,22 @@ namespace NetInput
     static const char OpponentSelect = '6';
 }
 
-namespace Cards
+namespace CardDef
 {
-    // std::vector<Card*> CardList
-    // {
-    //     new Card(),
-    // };
+    static const std::vector<CardData*> CardInfoList
+    {
+        new CardData(L"Guerreiro Escravo", sf::IntRect(522, 0, 125, 118), 10, Action::Damage, TargetType::Single, Status::NONE),
+        new CardData(L"Ogro do Vale", sf::IntRect(647, 0, 125, 118), 10, Action::Damage, TargetType::Single, Status::NONE),
+        new CardData(L"Bruxa de Hundra", sf::IntRect(773, 0, 125, 118), 13, Action::Damage, TargetType::Single, Status::Poisoning),
+        new CardData(L"Troll da Montanha", sf::IntRect(899, 0, 125, 118), 10, Action::Damage, TargetType::Single, Status::Bleeding),
+        new CardData(L"Deban. dos Javalis", sf::IntRect(899, 118, 125, 118), 15, Action::Damage, TargetType::Single, Status::NONE),
+        new CardData(L"Chicote de Fogo", sf::IntRect(774, 118, 124, 118), 10, Action::Damage, TargetType::Single, Status::NONE),
+        new CardData(L"Bola de Fogo", sf::IntRect(648, 118, 126, 118), 10, Action::Damage, TargetType::Global, Status::Burning),
+        new CardData(L"Inferno de Lava", sf::IntRect(521, 118, 126, 118), 15, Action::Damage, TargetType::Single, Status::Burning),
+        new CardData(L"Poção", sf::IntRect(899, 237, 125, 118), 10, Action::HPRecover, TargetType::Self, Status::HPRecovering),
+        new CardData(L"Congelar", sf::IntRect(773, 236, 125, 118), 0, Action::Freezing, TargetType::Single, Status::Freezing),
+        new CardData(L"Meow", sf::IntRect(648, 236, 125, 118), 0, Action::NONE, TargetType::Self, Status::NONE),
+        new CardData(L"Tornado de Chamas", sf::IntRect(522, 237, 125, 118), 0, Action::TurnTable, TargetType::Global, Status::NONE),
+        new CardData(L"Escudo Mágico", sf::IntRect(898, 354, 126, 118), 0, Action::Shield, TargetType::Single, Status::NONE)
+    };
 }

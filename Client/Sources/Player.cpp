@@ -90,18 +90,6 @@ void Player::Burning()
     }
 }
 
-void Player::Blind()
-{
-    if(this->Status == Status::Blind)
-    {
-        if(this->BlindedTimer->ExecuteTimer())
-        {
-            this->SetStatus(Status::NONE);
-            this->BlindedTimer->ResetTimer();
-        }
-    }
-}
-
 void Player::HPRecovering()
 {
     if(this->Status == Status::HPRecovering)
@@ -133,7 +121,6 @@ void Player::LoadTimers()
     this->BleedingTimer  = new Timer(DefaultMaxValue::BLEEDING_DURATION);
     this->PoisoningTimer = new Timer(DefaultMaxValue::POISONING_DURATION);
     this->BurningTimer   = new Timer(DefaultMaxValue::BURNING_DURATION);
-    this->BlindedTimer   = new Timer(DefaultMaxValue::BLIND_DURATION);
     this->HPRecoverTimer = new Timer(DefaultMaxValue::HP_DURATION);
     this->FreezingTimer  = new Timer(DefaultMaxValue::FREEZING_DURATION);
 }
@@ -145,7 +132,6 @@ void Player::Update()
     this->Bleeding();
     this->Poisoning();
     this->Burning();
-    this->Blind();
     this->HPRecovering();
     this->Freezing();
 }

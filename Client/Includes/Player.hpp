@@ -60,7 +60,6 @@ class Player
         void Bleeding();
         void Poisoning();
         void Burning();
-        void Blind();
         void Freezing();
         void HPRecovering();
 };
