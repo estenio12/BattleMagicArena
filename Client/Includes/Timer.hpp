@@ -9,15 +9,13 @@
 class Timer
 {
     private:
-        float* DeltaTime;
+        float FixedDeltaTime = 0.016;
         float TargetTime = 0.f;
         float CurrentCounter = 0;
 
     public:
-        // # @param DeltaTime = Game Delta Time
         // # @param TargetTime= Max limit time
-        Timer(float* DeltaTime, float TargetTime):
-             DeltaTime(DeltaTime), TargetTime(TargetTime){}
+        Timer(float TargetTime): TargetTime(TargetTime){}
 
         void ResetTimer()
         {
@@ -28,7 +26,7 @@ class Timer
         {
             if(this->CurrentCounter < this->TargetTime)
             {
-                this->CurrentCounter += *this->DeltaTime;
+                this->CurrentCounter += this->FixedDeltaTime;
             }
             else
             {

@@ -9,19 +9,25 @@ int main()
     // # Setting 
     window.setFramerateLimit(60.f);
 
+    sf::Sprite spr;
+    sf::Texture tex;
+    tex.loadFromFile("./Resources/Sprites/SpriteSheet.png");
+    spr.setTexture(tex);
+    spr.setColor(sf::Color::Blue);
+
     while (window.isOpen())
     {
         while(window.pollEvent(event))
         {
-            switch (event.type)
+            if(event.type == sf::Event::Closed)
             {
-                case sf::Event::Closed:
-                    window.close();
-                break;
+                window.close();
             }
         }
 
         window.clear();
+
+        window.draw(spr);
 
         window.display();
     }

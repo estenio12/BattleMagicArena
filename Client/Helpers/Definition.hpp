@@ -13,11 +13,11 @@
 
 #include "../Helpers/CardDefinition.hpp"
 
-enum TargetType
+namespace TargetType
 {
-    Single = 0,
-    Global,
-    Self
+    static char Single = '0';
+    static char Global = '1';
+    static char Self   = '2';
 };
 
 namespace Configuration
@@ -38,21 +38,12 @@ namespace CardColor
 
 namespace Action
 {
-    static const char NONE           = '0';
-    static const char Shield         = '1';
-    static const char PhysicalDamage = '2';
-    static const char ThunderDamage  = '3';
-    static const char FireDamage     = '4';
-    static const char ImpactDamage   = '5';
-    static const char HPRecover      = '6';
-    static const char Freezing       = '7';
-    static const char TurnTable      = '8';
-
-    static const float PhysicalDamageValue = 10.f;
-    static const float ThunderDamageValue  = 8.f;
-    static const float FireDamageValue     = 7.5f;
-    static const float ImpactDamageValue   = 8.3f;
-    static const float HPRecoverValue      = 7.8f;
+    static const char NONE      = '0';
+    static const char Shield    = '1';
+    static const char Damage    = '2';
+    static const char HPRecover = '6';
+    static const char Freezing  = '7';
+    static const char TurnTable = '8';
 }
 
 namespace Status
@@ -97,8 +88,8 @@ namespace NetInput
 
 namespace Cards
 {
-    std::vector<Card*> CardList
-    {
-        new Card(),
-    };
+    // std::vector<Card*> CardList
+    // {
+    //     new Card(),
+    // };
 }

@@ -27,7 +27,7 @@ float Player::ApplyDamageToShieldIfActivated(float Damage)
 
         if(GetRest < 0) this->Shield = 0;
 
-        return abs(GetRest);
+        return std::abs(GetRest);
     }
 
     return Damage;
@@ -130,12 +130,12 @@ void Player::Freezing()
 
 void Player::LoadTimers()
 {
-    this->BleedingTimer  = new Timer(this->DeltaTime, DefaultMaxValue::BLEEDING_DURATION);
-    this->PoisoningTimer = new Timer(this->DeltaTime, DefaultMaxValue::POISONING_DURATION);
-    this->BurningTimer   = new Timer(this->DeltaTime, DefaultMaxValue::BURNING_DURATION);
-    this->BlindedTimer   = new Timer(this->DeltaTime, DefaultMaxValue::BLIND_DURATION);
-    this->HPRecoverTimer = new Timer(this->DeltaTime, DefaultMaxValue::HP_DURATION);
-    this->FreezingTimer  = new Timer(this->DeltaTime, DefaultMaxValue::FREEZING_DURATION);
+    this->BleedingTimer  = new Timer(DefaultMaxValue::BLEEDING_DURATION);
+    this->PoisoningTimer = new Timer(DefaultMaxValue::POISONING_DURATION);
+    this->BurningTimer   = new Timer(DefaultMaxValue::BURNING_DURATION);
+    this->BlindedTimer   = new Timer(DefaultMaxValue::BLIND_DURATION);
+    this->HPRecoverTimer = new Timer(DefaultMaxValue::HP_DURATION);
+    this->FreezingTimer  = new Timer(DefaultMaxValue::FREEZING_DURATION);
 }
 
 void Player::Update()

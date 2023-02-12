@@ -15,7 +15,6 @@ class Card
         std::string ID = "00";
         std::string Title;
         std::string Description;
-        sf::Sprite Sprite;
 
     public:
         float Damage      = 0.f;
@@ -23,6 +22,14 @@ class Card
         char TargetType   = '0';
         char Status       = '0';
         sf::Color CardColor = sf::Color::White;
+
+    private:
+        sf::Sprite CardImage;
+        sf::Sprite Background;
+        sf::Sprite TitleBar;
+        sf::Sprite ImageBar;
+        sf::Text txt_Title;
+        sf::Texture Texture;
 
     public:
         Card(std::string ID,
@@ -37,8 +44,8 @@ class Card
              char Status = '0')
         {
             this->ID          = ID;
-            this->Sprite.setTexture(texture);
-            this->Sprite.setTextureRect(CardRectCoordenates);
+            this->CardImage.setTexture(texture);
+            this->CardImage.setTextureRect(CardRectCoordenates);
             this->Title       = Title;
             this->Description = Description;
             this->Damage      = Damage;
@@ -51,6 +58,6 @@ class Card
     public:
         void Render(sf::RenderWindow* app)
         {
-            app->draw(this->Sprite);
+            app->draw(this->CardImage);
         }
 };
